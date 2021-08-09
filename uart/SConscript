@@ -1,0 +1,14 @@
+import os
+from building import *
+import rtconfig
+
+cwd  = GetCurrentDir()
+src  = []
+CPPPATH = []
+
+if GetDepend('PKG_RT_LINK_USING_UART'):
+    src += ['./rtlink_port_uart.c']
+
+group = DefineGroup('rt-link-port', src, depend = ['RT_USING_RT_LINK'], CPPPATH = CPPPATH)
+
+Return('group')
