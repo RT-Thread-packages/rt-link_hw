@@ -1,0 +1,12 @@
+from building import *
+
+cwd  = GetCurrentDir()
+src  = []
+CPPPATH = []
+
+if GetDepend('PKG_RT_LINK_USING_TCP'):
+    src += ['./rtlink_port_tcp.c']
+
+group = DefineGroup('rt-link-port', src, depend = ['RT_USING_RT_LINK'], CPPPATH = CPPPATH)
+
+Return('group')
