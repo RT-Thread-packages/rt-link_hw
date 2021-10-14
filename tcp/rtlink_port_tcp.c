@@ -127,6 +127,11 @@ static void rtlink_socket_thread_entry(void *param)
     }
 }
 
+rt_err_t rt_link_port_reconnect(void)
+{
+    return RT_EOK;
+}
+
 rt_size_t rt_link_port_send(void *data, rt_size_t length)
 {
     rt_size_t size = 0;

@@ -32,6 +32,11 @@ rt_err_t rt_link_port_rx_ind(rt_device_t device, rt_size_t size)
     return RT_EOK;
 }
 
+rt_err_t rt_link_port_reconnect(void)
+{
+    return RT_EOK;
+}
+
 rt_size_t rt_link_port_send(void *data, rt_size_t length)
 {
     rt_size_t size = 0;
