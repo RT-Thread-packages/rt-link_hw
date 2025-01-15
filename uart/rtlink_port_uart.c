@@ -16,11 +16,17 @@
 #include <rtdevice.h>
 #include <rtlink_port.h>
 
-#ifndef RT_LINK_HW_DEVICE_NAME
-    #define RT_LINK_HW_DEVICE_NAME "uart2"
+#ifdef PKG_PKG_RT_LINK_HW_DEVICE_NAME
+    #define RT_LINK_HW_DEVICE_NAME PKG_PKG_RT_LINK_HW_DEVICE_NAME
+#else
+    #error "PKG_PKG_RT_LINK_HW_DEVICE_NAME must be defined."
 #endif
 
-#define RT_LINK_HW_RB_BUFSZ     (BSP_UART2_RX_BUFSIZE / 2)
+#ifdef RT_SERIAL_RB_BUFSZ
+    #define RT_LINK_HW_RB_BUFSZ     (RT_SERIAL_RB_BUFSZ)
+#else
+    #define RT_LINK_HW_RB_BUFSZ 64
+#endif
 
 static struct rt_device *hw_device = RT_NULL;
 static rt_uint8_t buffer[RT_LINK_HW_RB_BUFSZ] = {0};
